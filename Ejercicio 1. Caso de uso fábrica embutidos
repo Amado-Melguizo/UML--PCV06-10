@@ -1,39 +1,28 @@
-@startuml@startuml
+@startuml
 left to right direction
 skinparam packageStyle rectangle
-actor Profesor
-actor Alumnos
-rectangle Moodle {
-Profesor --> (Entra en la plataforma)
-Profesor --> (Inicia sesión en la plataforma)
-Profesor --> (Entra en la gestión de grupos)
-Profesor --> (Crea un nuevo curso)
-Profesor --> (Creación de diferentes materias)
-Profesor --> (Crea la gestión de temario)
-Profesor --> (Crea la gestión de las tareas)
-Profesor --> (Crea la gestión de calificaciones)
-Profesor --> (Crea las claves de matriculación)
-Profesor --> (Verifica registro)
-Alumnos .> (Entra en la plataforma)
-Alumnos .> (Inicia sesión en la plataforma)
-Alumnos .> (Entra en la gestión de grupos)
-Alumnos .> (Introduce la clave de matricula)
-Alumnos .> (Verifica registro) 
+actor Socios
+actor Cliente
+actor Otros_Socios
+rectangle Cooperativa_Socios {
+
+rectangle Fábrica{
+Socios  <-- (Producto):Retirar
+Socios  --> (Tienda):Vender a Precio Menor
+(AppWeb)
 }
-  Profesor .> (Clave de matriculación)
-(Clave de matriculación) .> Alumnos
-@enduml
-Profesor --> (Crea la gestión de temario)
-Profesor --> (Crea la gestión de las tareas)
-Profesor --> (Crea la gestión de calificaciones)
-Profesor --> (Crea las claves de matriculación)
-Profesor --> (Verifica registro)
-Alumnos .> (Entra en la plataforma)
-Alumnos .> (Inicia sesión en la plataforma)
-Alumnos .> (Entra en la gestión de grupos)
-Alumnos .> (Introduce la clave de matricula)
-Alumnos .> (Verifica registro) 
+
+Socios  --> (Cliente):Distribuir
+Socios  --> (Otros_Socios):reparto de beneficios
+Socios  --> (Otros_Socios):vender su parte de producto
+
+rectangle AppWeb{
+Cliente --> (Catálogos)
+Cliente --> (Precios)
+Cliente --> (Pedidos)
 }
-  Profesor .> (Clave de matriculación)
-(Clave de matriculación) .> Alumnos
+}
+  Fábrica --> (Beneficios)
+(Beneficios) <-- AppWeb
+Socios <-- (Beneficios)
 @enduml
